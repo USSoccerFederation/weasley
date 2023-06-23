@@ -6,6 +6,7 @@
 
 .header {
     display: flex;
+    justify-content: center;
     width: 100%;
 
     // 1.6EM-MED
@@ -27,5 +28,50 @@
         justify-content: center;
         margin: 0 1rem;
         padding: 0.5rem;
+    }
+}
+
+.round {
+    display: flex;
+    flex-direction: column;
+    margin: 2.5rem 0;
+    width: 20%;
+
+    // 1.6EM-BOLD
+    font-size: 1.2rem;
+    font-family: 'USSF90MinDisplay';
+    font-weight: 700;
+    line-height: 0%;
+    letter-spacing: 0.06rem;
+    text-transform: uppercase;
+
+
+    .matchup {
+        align-items: center;
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        justify-content: center;
+        margin: 1rem;
+
+        li {
+            // 1.2EM-MED
+            font-size: 0.9rem;
+            font-family: 'USSF90MinDisplay';
+            font-weight: 500;
+            letter-spacing: 0.045rem;
+            text-transform: uppercase;
+
+            align-items: center;
+            background-color: #E6E6E6;
+            border: 1px solid black;
+            display: flex;
+            justify-content: left;
+            padding: 1rem 0.5rem;
+            width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
     }
 }
