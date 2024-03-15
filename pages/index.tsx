@@ -5,8 +5,6 @@ import { Inter } from 'next/font/google'
 import Bracket from '../src/Bracket'
 import WeasleyBracket from '../src/WeasleyBracket'
 
-const inter = Inter({ subsets: ['latin'] })
-
 declare global {
   interface Window {
     bracketsViewer?: any;
@@ -26,7 +24,6 @@ export default function Home() {
       </Head>
       <main>
         <WeasleyBracket />
-        <Bracket />
       </main>
     </>
   )
