@@ -1,8 +1,18 @@
 import React, { useEffect, useState, useRef } from 'react';
 import styles from "@/styles/WeasleyBracket.module.scss";
 import matches from "../../data.json"
+import type { Match } from '@/types/Match';
 
 export default function WeasleyBracket() {
+    const [selectedTeams, setSelectedTeams] = useState({});
+    const allMatches: Match[] = matches;
+
+    const handleTeamSelect = (matchId: string, team: string) => {
+        setSelectedTeams(prevState => ({
+            ...prevState,
+            [matchId]: team
+        }));
+    };
 
     return (
         <table className={styles.bracket}>
@@ -16,13 +26,19 @@ export default function WeasleyBracket() {
                 </tr>
             </thead>
             <tbody>
-                {matches.map(match => (
+                {allMatches.map(match => (
                     <tr key={match.Id} className={styles.column}>
                         <td className={styles.match}>
                             <span className={styles.id}>{match.Id}</span>
-                            <span className={styles.team}>{match.Team1}</span>
-                            <span className={styles.versus}>vs</span>
-                            <span className={styles.team}>{match.Team2}</span>
+                            <div className={styles.teams}>
+                                <button 
+                                    className={`${styles.team} ${selectedTeams[match.Id] === match.Team1 ? styles.selected : ''}`}
+                                    onClick={() => handleTeamSelect(match.Id, match.Team1)}
+                                >{match.Team1}</button>
+                                <button 
+                                    className={`${styles.team} ${selectedTeams[match.Id] === match.Team2 ? styles.selected : ''}`}
+                                >{match.Team2}</button>
+                            </div>
                         </td>
                     </tr>
                 ))}

@@ -1,8 +1,5 @@
 /* eslint-disable @next/next/no-sync-scripts */
 import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import Bracket from '../src/Bracket'
 import WeasleyBracket from '../src/WeasleyBracket'
 
 declare global {
