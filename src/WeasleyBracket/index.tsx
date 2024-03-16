@@ -4,7 +4,7 @@ import matches from "../../data.json"
 import type { Match } from '@/types/Match';
 
 export default function WeasleyBracket() {
-    const [selectedTeams, setSelectedTeams] = useState({});
+    const [selectedTeams, setSelectedTeams] = useState<{ [key: string]: string }>({});
     const allMatches: Match[] = matches;
 
     const handleTeamSelect = (matchId: string, team: string) => {
@@ -36,7 +36,8 @@ export default function WeasleyBracket() {
                                     onClick={() => handleTeamSelect(match.Id, match.Team1)}
                                 >{match.Team1}</button>
                                 <button 
-                                    className={`${styles.team} ${selectedTeams[match.Id] === match.Team2 ? styles.selected : ''}`}
+                                    className={`${styles.team2} ${styles.team} ${selectedTeams[match.Id] === match.Team2 ? styles.selected : ''}`}
+                                    onClick={() => handleTeamSelect(match.Id, match.Team2)}
                                 >{match.Team2}</button>
                             </div>
                         </td>

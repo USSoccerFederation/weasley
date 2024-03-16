@@ -72,10 +72,12 @@
     }
 
     button {
-        background-color: #f0f0f0;
-        border: 1px solid #ccc;
         padding: 0.5rem 1rem;
         color: #333;
+    }
+
+    button:hover {
+        background-color: #E6E6E6;
     }
     
     /* Add additional styles for selected buttons */
