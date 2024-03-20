@@ -20,7 +20,7 @@ jobs:
           submodules: true
           lfs: false
       - name: Continue run without deployment if token is missing
-        if: secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_POLITE_FOREST_078C9D010 == ''
+        if: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_POLITE_FOREST_078C9D010 }} == ''
         run: echo "Skipping deployment due to missing Azure Static Web Apps API token"
         env:
           skip_deploy_on_missing_secrets: true
