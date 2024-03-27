@@ -1,0 +1,4 @@
+type Selection @model {
+  id: ID
+  name: String
+}

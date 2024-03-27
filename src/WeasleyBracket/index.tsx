@@ -15,35 +15,60 @@ export default function WeasleyBracket() {
     };
 
     return (
-        <table className={styles.bracket}>
-            <thead>
-                <tr>
-                    <th className={styles.column}>Round of 32</th>
-                    <th className={styles.column}>Round of 16</th>
-                    <th className={styles.column}>Quarter Final</th>
-                    <th className={styles.column}>Semifinal</th>
-                    <th className={styles.column}>Final</th>
-                </tr>
-            </thead>
-            <tbody>
-                {allMatches.map(match => (
-                    <tr key={match.Id} className={styles.column}>
-                        <td className={styles.match}>
-                            <span className={styles.id}>{match.Id}</span>
-                            <div className={styles.teams}>
-                                <button 
-                                    className={`${styles.team} ${selectedTeams[match.Id] === match.Team1 ? styles.selected : ''}`}
-                                    onClick={() => handleTeamSelect(match.Id, match.Team1)}
-                                >{match.Team1}</button>
-                                <button 
-                                    className={`${styles.team2} ${styles.team} ${selectedTeams[match.Id] === match.Team2 ? styles.selected : ''}`}
-                                    onClick={() => handleTeamSelect(match.Id, match.Team2)}
-                                >{match.Team2}</button>
-                            </div>
-                        </td>
+        <>
+            <button id="list" onClick={() => list()}>List</button>
+            <table className={styles.bracket}>
+                <thead>
+                    <tr>
+                        <th className={styles.column}>Round of 32</th>
+                        <th className={styles.column}>Round of 16</th>
+                        <th className={styles.column}>Quarter Final</th>
+                        <th className={styles.column}>Semifinal</th>
+                        <th className={styles.column}>Final</th>
                     </tr>
-                ))}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    {allMatches.map(match => (
+                        <tr key={match.Id} className={styles.column}>
+                            <td className={styles.match}>
+                                <span className={styles.id}>{match.Id}</span>
+                                <div className={styles.teams}>
+                                    <button 
+                                        className={`${styles.team} ${selectedTeams[match.Id] === match.Team1 ? styles.selected : ''}`}
+                                        onClick={() => handleTeamSelect(match.Id, match.Team1)}
+                                    >{match.Team1}</button>
+                                    <button 
+                                        className={`${styles.team2} ${styles.team} ${selectedTeams[match.Id] === match.Team2 ? styles.selected : ''}`}
+                                        onClick={() => handleTeamSelect(match.Id, match.Team2)}
+                                    >{match.Team2}</button>
+                                </div>
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </>
     )
 }
+
+async function list() {
+
+    const query = `
+        {
+          users {
+            selections {
+              id
+              name
+            }
+          }
+        }`;
+        
+    const endpoint = "/data-api/graphql";
+    const response = await fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ query: query })
+    });
+    const result = await response.json();
+    console.table(result.data.people.items);
+  }
