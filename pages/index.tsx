@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-sync-scripts */
 import Head from 'next/head'
-import WeasleyBracket from '../WeasleyBracket'
+import WeasleyBracket from '../src/WeasleyBracket'
 
 declare global {
   interface Window {
