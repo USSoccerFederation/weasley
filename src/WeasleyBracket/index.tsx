@@ -52,7 +52,6 @@ export default function WeasleyBracket() {
 }
 
 async function list() {
-
     const query = `
         {
           users {
