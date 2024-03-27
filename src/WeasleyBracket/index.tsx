@@ -63,7 +63,7 @@ async function list() {
           }
         }`;
         
-    const endpoint = "/data-api/graphql";
+    const endpoint = "/data-api/rest";
     const response = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -71,4 +71,4 @@ async function list() {
     });
     const result = await response.json();
     console.table(result.data.people.items);
-  }
+}

@@ -1,38 +1,33 @@
 {
-  "$schema": "https://github.com/Azure/data-api-builder/releases/download/v0.9.7/dab.draft.schema.json",
+  "$schema": "https://github.com/Azure/data-api-builder/releases/latest/download/dab.draft.schema.json",
   "data-source": {
     "database-type": "cosmosdb_nosql",
-    "connection-string": "AccountEndpoint=https://usoc-db-dev.documents.azure.com:443/;AccountKey=1VX5Uu4b44JyoL2joHnSLuQP76UQxUjsFpeNxGrPM4RkoDfRBqUUMClCl4dXWkaPkczLwupg5076ACDbwq1LpQ==;",
     "options": {
-      "database": "Users",
+      "database": "MyTestPersonDatabase",
       "schema": "staticwebapp.database.schema.gql"
-    }
+    },
+    "connection-string": "@env('DATABASE_CONNECTION_STRING')"
   },
   "runtime": {
-    "rest": {
-      "enabled": false,
-      "path": "/api",
-      "request-body-strict": true
-    },
     "graphql": {
+      "allow-introspection": true,
       "enabled": true,
-      "path": "/graphql",
-      "allow-introspection": true
+      "path": "/graphql"
     },
     "host": {
+      "mode": "production",
       "cors": {
-        "origins": ["http://localhost:3000"],
+        "origins": ["http://localhost:4280"],
         "allow-credentials": false
       },
       "authentication": {
         "provider": "StaticWebApps"
-      },
-      "mode": "production"
+      }
     }
   },
   "entities": {
-    "Selection": {
-      "source": "Selections",
+    "Person": {
+      "source": "MyTestPersonContainer",
       "permissions": [
         {
           "actions": ["*"],

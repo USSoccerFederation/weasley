@@ -1,4 +1,4 @@
-type Selection @model {
+type Person @model {
   id: ID
-  name: String
+  Name: String
 }
