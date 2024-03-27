@@ -101,12 +101,12 @@
         };
 
         const gql = `
-        mutation create($item: CreatePersonInput!) {
-            createPerson(item: $item) {
-            id
-            Name
-            }
-        }`;
+            mutation create($item: CreatePersonInput!) {
+                createPerson(item: $item) {
+                    id
+                    Name
+                }
+            }`;
 
         const query = {
         query: gql,
@@ -130,9 +130,9 @@
         const id = '3';
 
         const gql = `
-        mutation del($id: ID!, $_partitionKeyValue: String!) {
-            deletePerson(id: $id, _partitionKeyValue: $_partitionKeyValue) {
-            id
+            mutation del($id: ID!, $_partitionKeyValue: String!) {
+                deletePerson(id: $id, _partitionKeyValue: $_partitionKeyValue) {
+                id
             }
         }`;
 
