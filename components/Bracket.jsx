@@ -1,13 +1,12 @@
 import React, { useEffect, useState, useRef } from 'react';
 import styles from "@/styles/WeasleyBracket.module.scss";
-import matches from "../../data.json"
-import type { Match } from '@/types/Match';
+import matches from "../data.json"
 
-export default function WeasleyBracket() {
-    const [selectedTeams, setSelectedTeams] = useState<{ [key: string]: string }>({});
-    const allMatches: Match[] = matches;
+export default function Bracket() {
+    const [selectedTeams, setSelectedTeams] = useState({});
+    const allMatches= matches;
 
-    const handleTeamSelect = (matchId: string, team: string) => {
+    const handleTeamSelect = (matchId, team) => {
         setSelectedTeams(prevState => ({
             ...prevState,
             [matchId]: team
@@ -15,8 +14,7 @@ export default function WeasleyBracket() {
     };
 
     return (
-        <>
-            <button id="list" onClick={() => list()}>List</button>
+        <div className={styles.bracketContainer}>
             <table className={styles.bracket}>
                 <thead>
                     <tr>
@@ -47,27 +45,6 @@ export default function WeasleyBracket() {
                     ))}
                 </tbody>
             </table>
-        </>
+        </div>
     )
-}
-
-async function list() {
-    const query = `
-        {
-          users {
-            selections {
-              id
-              name
-            }
-          }
-        }`;
-        
-    const endpoint = "/data-api/rest";
-    const response = await fetch(endpoint, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ query: query })
-    });
-    const result = await response.json();
-    console.table(result.data.people.items);
 }

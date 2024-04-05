@@ -34,7 +34,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-  ],
+, "components/Loading.jsx", "components/Bracket.jsx", "app/profile/page.jsx", "app/layout.jsx"  ],
   "exclude": [
     "node_modules"
   ]
