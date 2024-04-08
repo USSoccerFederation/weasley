@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import styles from "@/styles/WeasleyBracket.module.scss";
+import styles from "@/styles/Bracket.module.scss";
 import matches from "../data.json"
 
 export default function Bracket() {
