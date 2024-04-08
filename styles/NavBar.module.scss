@@ -1,0 +1,45 @@
+/* NavBar.scss */
+
+.navBarContainer {
+  width: 100%;
+  background-color: #3333338c;
+  color: #fff;
+}
+
+.navBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.navBarLogo img {
+  max-height: 75px;
+  max-width: auto;
+}
+
+.navLinks {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.navLinks li {
+  margin-right: 20px;
+}
+
+.navLinks li:last-child {
+  margin-right: 0;
+}
+
+.navLinks li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.navLinks li a:hover {
+  color: rgb(255, 215, 0); /* Change to your desired hover color */
+}
