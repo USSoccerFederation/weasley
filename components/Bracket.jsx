@@ -29,6 +29,13 @@ function Bracket() {
 
     return (
         <div className={styles.bracketContainer}>
+            <ul>
+                {Object.keys(selectedTeams).map((key) => (
+                    <li key={key}>
+                        {key}: {selectedTeams[key]}
+                    </li>
+                ))}
+            </ul>
             <table className={styles.bracket}>
                 <thead>
                     <tr>
@@ -46,7 +53,7 @@ function Bracket() {
                                 <span className={styles.id}>{match.matchInfo.idd}</span>
                                 <div className={styles.teams}>
                                     <button 
-                                        className={`${styles.team} ${selectedTeams[match.Id] === match.Team1 ? styles.selected : ''}`}
+                                        className={`${styles.team} ${selectedTeams[match.matchInfo.id] === match.matchInfo.contestant[0].name ? styles.selected : ''}`}
                                         onClick={() => handleTeamSelect(match.matchInfo.id, match.matchInfo.contestant[0].name)}
                                     >{match.matchInfo.contestant[0].name}</button>
                                     <button 
