@@ -1,16 +1,15 @@
 'use client';
 
 import React from 'react';
-
-import Content from '../components/Content';
 import Bracket from '@/components/Bracket';
+import LoginButton from '@/components/LoginButton';
 
 export default function Index() {
   return (
     <>
+      <LoginButton />
       <Bracket />
       <hr />
-      <Content />
     </>
   );
 }

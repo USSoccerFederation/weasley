@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
 import styles from "@/styles/Bracket.module.scss";
-import matches from "../data.json";
 import fetchMatches from "../utils/matches";
 
 function Bracket() {
@@ -47,19 +46,19 @@ function Bracket() {
                     </tr>
                 </thead>
                 <tbody>
-                    {allMatches?.map(match => (
-                        <tr key={match.matchInfo.id} className={styles.column}>
+                    {allMatches?.map(({ matchInfo }, index) => (
+                        <tr key={matchInfo.id} className={styles.column}>
                             <td className={styles.match}>
-                                <span className={styles.id}>{match.matchInfo.idd}</span>
+                                <span className={styles.id}>Game {index + 1}</span>
                                 <div className={styles.teams}>
                                     <button 
-                                        className={`${styles.team} ${selectedTeams[match.matchInfo.id] === match.matchInfo.contestant[0].name ? styles.selected : ''}`}
-                                        onClick={() => handleTeamSelect(match.matchInfo.id, match.matchInfo.contestant[0].name)}
-                                    >{match.matchInfo.contestant[0].name}</button>
+                                        className={`${styles.team} ${selectedTeams[matchInfo.id] === matchInfo.contestant[0].officialName ? styles.selected : ''}`}
+                                        onClick={() => handleTeamSelect(matchInfo.id, matchInfo.contestant[0].name)}
+                                    >{matchInfo.contestant[0].name}</button>
                                     <button 
-                                        className={`${styles.team2} ${styles.team} ${selectedTeams[match.matchInfo.id] === match.matchInfo.contestant[1].name ? styles.selected : ''}`}
-                                        onClick={() => handleTeamSelect(match.matchInfo.id, match.matchInfo.contestant[1].name)}
-                                    >{match.matchInfo.contestant[1].name}</button>
+                                        className={`${styles.team2} ${styles.team} ${selectedTeams[matchInfo.id] === matchInfo.contestant[1].officialName ? styles.selected : ''}`}
+                                        onClick={() => handleTeamSelect(matchInfo.id, matchInfo.contestant[1].name)}
+                                    >{matchInfo.contestant[1].name}</button>
                                 </div>
                             </td>
                         </tr>
