@@ -1,94 +1,60 @@
-@font-face {
-	font-family: "USSF90MinDisplay";
-	font-weight: 500;
-	src: url("../styles/assets/fonts/USSF-90-Min-Display-Medium.woff2") format("woff2"), url("../styles/assets/fonts/USSF-90-Min-Display-Medium.woff") format("woff"), url("../styles/assets/fonts/USSF-90-Min-Display-Medium.ttf") format("truetype")
+.bracketContainer {
+    display: flex;
+    flex-wrap: nowrap; /* Prevent wrapping */
+    justify-content: flex-start; /* Align items to the start */
+    align-items: flex-start;
+    padding: 1rem;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    white-space: nowrap; /* Prevent wrapping */
 }
 
 .bracket {
-    justify-content: left;
+    display: flex;
+    flex-wrap: nowrap; /* Prevent wrapping */
+}
+
+.stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem;
+    padding: 0.5rem;
+    min-width: 300px; /* Minimum width for each stage */
+    flex: 0 0 auto; /* Prevent shrinking */
+}
+
+.match {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 0;
+    border: 1px solid #ccc;
+    margin-bottom: 1rem;
     width: 100%;
-
-    // 1.6EM-MED
-    font-family: 'USSF90MinDisplay';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 19.2px;
-    line-height: 23px;
-    /* identical to box height */
-
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-
-    .column {
-        align-items: center;
-        justify-content: center;
-        margin: 0 1rem;
-        min-width: 50rem;
-        padding: 0.5rem;
-        width: 100%;
-    }
-
-    th {
-        background-color: #E6E6E6;
-    }
-
-    .match {
-        display: flex;
-        flex: 1;
-        padding: 2rem 0;
-    }
-
-    .id {
-        align-items: center;
-        display: flex;
-        flex: 1;
-        justify-content: center;
-    }
-
-    .teams {
-        min-width: 45rem;
-    }
-
-    .team {
-        border-bottom: 2px solid #151928;
-        display: flex;
-        flex: 1;
-        justify-content: center;
-        padding: 1rem;
-    }
-
-    .team2 {
-        border-right: 2px solid #151928;
-    }
-
-    button {
-        appearance: none;
-        background-color: transparent;
-        border: none;
-        cursor: pointer;
-        outline: none;
-        padding: 0;
-        width: 100%;
-    }
-
-    button {
-        padding: 0.5rem 1rem;
-        color: #333;
-    }
-
-    button:hover {
-        background-color: #E6E6E6;
-    }
-    
-    /* Add additional styles for selected buttons */
-    button.selected {
-        /* Add your custom styles for selected buttons */
-        background-color: #ccc;
-    }
 }
 
-.bracketContainer {
-    overflow: auto;
-    max-height: 600px; /* Adjust as needed */
+.id {
+    margin-bottom: 0.5rem;
 }
 
+.teams {
+    display: flex;
+    flex-direction: column;
+}
+
+.team {
+    margin-bottom: 0.5rem;
+    width: 100%;
+}
+
+.selected {
+    background-color: #f0f0f0;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .stage {
+        min-width: 100%; /* Full width on smaller screens */
+    }
+}
